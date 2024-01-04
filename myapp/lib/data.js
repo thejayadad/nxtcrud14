@@ -14,7 +14,7 @@ try {
 
 }
 
-export const getContact = async () => {
+export const getContact = async (id) => {
 try {
     db.connect()
     const contact = await Contact.findById(id)

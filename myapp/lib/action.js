@@ -36,7 +36,7 @@ export const deleteContact = async (formData) => {
 }
 
 export const updateContactt = async (formData) => {
-    const { firstName, lastName,email, phone} =
+    const { id, firstName, lastName,email, phone} =
     Object.fromEntries(formData);
     try {
         db.connect()
