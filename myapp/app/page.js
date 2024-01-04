@@ -3,6 +3,16 @@ import Hero from '@/components/Hero'
 import Modals from '@/components/Modals'
 import {FiPlusCircle} from "react-icons/fi"
 
+import React from 'react'
+
+const HomePage = () => {
+  return (
+    <div>HomePage</div>
+  )
+}
+
+export default HomePage
+
 export default function Home() {
   return (
    <main>

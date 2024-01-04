@@ -1,11 +1,19 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import Input from './Input';
+import { addContact } from '@/lib/action';
+import Loading from './Loading';
+import { toast } from 'react-toastify';
+
 
 const CreateForm = () => {
+    const [loading, setLoading] = useState(false);
+
   return (
     <div>
-      <form className='bg-gray-300 flex flex-col items-center p-2 rounded-md'>
+      <form 
+      action={addContact}
+      className='bg-gray-300 flex flex-col items-center p-2 rounded-md'>
         <div className='flex mb-4'>
           <div className='w-1/2 pr-2'>
             <label htmlFor="first-name" className="text-gray-700">
@@ -14,6 +22,7 @@ const CreateForm = () => {
             <Input
               id="first-name"
               type="text"
+              name='firstName'
               placeholder={'First Name'}
             />
           </div>
@@ -23,13 +32,13 @@ const CreateForm = () => {
             </label>
             <Input
               id="last-name"
+              name='lastName'
               type="text"
               placeholder={'Last Name'}
             />
           </div>
         </div>
 
-        {/* Second Row: Email and Contact Number */}
         <div className='flex mb-4'>
           <div className='w-1/2 pr-2'>
             <label htmlFor="email" className="text-gray-700">
@@ -38,6 +47,7 @@ const CreateForm = () => {
             <Input
               id="email"
               type="email"
+              name='email'
               placeholder={'Email'}
             />
           </div>
@@ -48,11 +58,18 @@ const CreateForm = () => {
             <Input
               id="contact-number"
               type="text"
+              name='phone'
               placeholder={'Contact Number'}
             />
           </div>
-        </div>
-        <button className='btn btn-wide bg-orange-500' type='submit'>Create Contact</button>
+        </div>        
+        <button
+          className='btn btn-wide bg-orange-500'
+          type='submit'
+          disabled={loading}
+        >
+          {loading ? <Loading size={20} /> : 'Create Contact'}
+        </button>
       </form>
     </div>
   );
