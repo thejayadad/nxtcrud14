@@ -22,3 +22,38 @@ export const addContact = async (formData) => {
     revalidatePath("/");
     redirect("/");
 }
+
+export const deleteContact = async (formData) => {
+    const { id } = Object.fromEntries(formData);
+    try {
+        db.connect()
+        await Contact.findByIdAndDelete(id)
+    } catch (error) {
+        throw new Error("Failed to delete contact! " + error);
+
+    }
+    revalidatePath("/");
+}
+
+export const updateContactt = async (formData) => {
+    const { firstName, lastName,email, phone} =
+    Object.fromEntries(formData);
+    try {
+        db.connect()
+        const updateFields = {
+            firstName, lastName,email, phone
+          };
+      
+          Object.keys(updateFields).forEach(
+            (key) =>
+              (updateFields[key] === "" || undefined) && delete updateFields[key]
+          );
+      
+          await Contact.findByIdAndUpdate(id, updateFields);
+    } catch (error) {
+        throw new Error("Failed to update Contact " + error);
+
+    }
+    revalidatePath("/");
+    redirect("/");
+}
