@@ -13,7 +13,7 @@ const CreateForm = () => {
     <div>
       <form 
       action={addContact}
-      className='bg-gray-300 flex flex-col items-center p-2 rounded-md'>
+      className='bg-gray-200 flex flex-col items-center p-2 rounded-md'>
         <div className='flex mb-4'>
           <div className='w-1/2 pr-2'>
             <label htmlFor="first-name" className="text-gray-700">

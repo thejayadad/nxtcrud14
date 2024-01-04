@@ -1,29 +1,18 @@
-import CreateForm from '@/components/CreateForm'
-import Hero from '@/components/Hero'
-import Modals from '@/components/Modals'
-import {FiPlusCircle} from "react-icons/fi"
+import HeadingText from '@/components/HeadingText'
+import Navbar from '@/components/Navbar'
+import { getContacts } from '@/lib/data'
+import {FiEdit, FiTrash2} from "react-icons/fi"
 
-import React from 'react'
 
-const HomePage = () => {
+const HomePage = async () => {
+  const contacts = await getContacts()
   return (
-    <div>HomePage</div>
-  )
-}
-
-export default HomePage
-
-export default function Home() {
-  return (
-   <main>
-    <Hero />
-    <nav className='flex gap-6 px-4 py-8 justify-between items-center cursor-pointer'>
-      <Modals 
-        opening={<div className='flex items-center gap-1'><FiPlusCircle /> Create</div>}
-        title={'Add Contacts'}
-        children={<CreateForm />}
-      />
-    </nav>
+    <main>
+    <HeadingText
+    title='Contact Book'
+    description='All Contact Below'
+    />
+  <Navbar />
     <div className='flex flex-col px-4 py-4'>
     <span>Search</span>
 
@@ -60,33 +49,18 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td
-           className='border-t-2 border-gray-200 px-4 py-3' 
-            >
-              Jace
-            </td>
-            <td
-           className='border-t-2 border-gray-200 px-4 py-3' 
-            >
-              Jace
-            </td>
-            <td
-           className='border-t-2 border-gray-200 px-4 py-3' 
-            >
-              Jace
-            </td>
-            <td
-           className='border-t-2 border-gray-200 px-4 py-3' 
-            >
-              Jace
-            </td>
-            <td
-           className='border-t-2 border-gray-200 px-4 py-3' 
-            >
-              Jace
-            </td>
-          </tr>
+        {contacts.map((contact) => (
+                <tr key={contact.id}>
+                  <td className='border-t-2 border-gray-200 px-4 py-3'>{contact.firstName}</td>
+                  <td className='border-t-2 border-gray-200 px-4 py-3'>{contact.lastName}</td>
+                  <td className='border-t-2 border-gray-200 px-4 py-3'>{contact.email}</td>
+                  <td className='border-t-2 border-gray-200 px-4 py-3'>{contact.phone}</td>
+                  <td className='border-t-2 border-gray-200 px-4 py-3 flex gap-2'>
+                    <FiEdit />
+                    <FiTrash2 style={{color: 'red'}} />
+                  </td>
+                </tr>
+              ))}
         </tbody>
       </table>
     </div>
@@ -94,3 +68,6 @@ export default function Home() {
    </main>
   )
 }
+
+export default HomePage
+
