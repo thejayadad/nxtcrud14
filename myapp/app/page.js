@@ -49,6 +49,35 @@ export default function Home() {
             </th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td
+           className='border-t-2 border-gray-200 px-4 py-3' 
+            >
+              Jace
+            </td>
+            <td
+           className='border-t-2 border-gray-200 px-4 py-3' 
+            >
+              Jace
+            </td>
+            <td
+           className='border-t-2 border-gray-200 px-4 py-3' 
+            >
+              Jace
+            </td>
+            <td
+           className='border-t-2 border-gray-200 px-4 py-3' 
+            >
+              Jace
+            </td>
+            <td
+           className='border-t-2 border-gray-200 px-4 py-3' 
+            >
+              Jace
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
     </div>
