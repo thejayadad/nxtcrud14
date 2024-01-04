@@ -16,9 +16,7 @@ const HomePage = async () => {
     />
   <Navbar />
     <div className='flex flex-col px-4 py-4'>
-    <span>Search</span>
-
-    <div className=' py-4'>
+    <div className=''>
       <table
       className='table-auto w-full text-left whitespace-no-wrap'
       >
